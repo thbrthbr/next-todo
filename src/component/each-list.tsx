@@ -36,6 +36,7 @@ export default function EachList(props: Props) {
       {status == 'yet' ? (
         <div className="type-todo">
           <div>TO DO</div>
+          <div style={{ display: 'hidden' }}>{dummy && dummy.name}</div>
         </div>
       ) : (
         <div className="type-done">DONE</div>

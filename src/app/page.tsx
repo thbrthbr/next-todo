@@ -2,7 +2,6 @@
 
 'use client';
 
-import Image from 'next/image';
 import Bar from '@/component/bar';
 import Button from '@/component/button';
 import SmallButton from '@/component/small-button';
@@ -34,7 +33,7 @@ export default function Home() {
 
   // 할 일 목록 get요청
   const getTodos = async () => {
-    let result = await fetch(
+    const result = await fetch(
       `https://assignment-todolist-api.vercel.app/api/thbr/items`,
       {
         method: 'GET',
@@ -42,8 +41,8 @@ export default function Home() {
       },
     );
     const res = await result.json();
-    let yet = [];
-    let already = [];
+    const yet = [];
+    const already = [];
     for (let i = 0; i < res.length; i++) {
       if (res[i].isCompleted) {
         already.push({ ...res[i], memo: '', imageUrl: '', tenantId: userId });

@@ -36,7 +36,7 @@ export default function Detail() {
 
   // 특정 할 일의 세부 데이터들 get요청
   const getItemDetail = async () => {
-    let result = await fetch(
+    const result = await fetch(
       `https://assignment-todolist-api.vercel.app/api/thbr/items/${param.id}`,
       {
         method: 'GET',
@@ -70,7 +70,7 @@ export default function Detail() {
       }
       const formData = new FormData();
       formData.append('image', imageFile);
-      let result = await fetch(
+      const result = await fetch(
         `https://assignment-todolist-api.vercel.app/api/thbr/images/upload`,
         {
           method: 'POST',

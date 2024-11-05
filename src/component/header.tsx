@@ -3,7 +3,7 @@
 'use client';
 
 import logo from '../asset/Size=Large.png';
-import logo2 from '../asset/Size=small.png';
+import logo2 from '../asset/Size=Small.png';
 import { useRouter } from 'next/navigation';
 
 export default function Header() {
