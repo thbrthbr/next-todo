@@ -35,13 +35,17 @@ export default function Button(props: Props) {
   };
 
   const addTodo = async () => {
-    await fetch(`https://assignment-todolist-api.vercel.app/api/thbr/items`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: newTodo.name }),
-      cache: 'no-store',
-    });
-    func();
+    if (newTodo.name) {
+      await fetch(`https://assignment-todolist-api.vercel.app/api/thbr/items`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: newTodo.name }),
+        cache: 'no-store',
+      });
+      func();
+    } else {
+      alert('할 일을 입력해주세요!');
+    }
   };
 
   const editTodo = async () => {
