@@ -1,3 +1,5 @@
+// 리스트 낱개 컴포넌트
+
 'use client';
 
 import EachItem from './each-item';

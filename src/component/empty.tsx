@@ -1,3 +1,5 @@
+// 할 일 칸이 비어있을 때 보여주는 컴포넌트
+
 'use client';
 
 import empty from '../asset/Type=Todo, Size=Large.png';

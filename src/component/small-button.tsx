@@ -1,5 +1,6 @@
-'use client';
+// 좁은 화면에서 볼 수 있는 소형 버튼 컴포넌트
 
+'use client';
 import plusIcon from '../asset/Frame 2610256.png';
 
 interface Todo {

@@ -1,3 +1,5 @@
+// 범용 요소 컴포넌트
+
 'use client';
 
 import { useRouter } from 'next/navigation';
@@ -28,14 +30,17 @@ export default function EachItem(props: Props) {
   const spanRef = useRef<HTMLSpanElement | null>(null);
   const router = useRouter();
 
+  // 특정 아이템 세부사항으로 이동
   const goDetail = (id: number) => {
     if (!isDetail) router.push(`/items/${id}`);
   };
 
+  // 할 일 제목 변경 함수
   const changeName = (event: ChangeEvent<HTMLInputElement>) => {
     setName({ ...name, name: event.target.value });
   };
 
+  // 할 일 <-> 완료 전환
   const checkTodo = async (event: React.MouseEvent<HTMLElement>) => {
     if (!isDetail) {
       event.stopPropagation();
@@ -58,6 +63,7 @@ export default function EachItem(props: Props) {
     }
   };
 
+  // 할 일의 제목 input창 자동사이징용 코드
   useEffect(() => {
     if (spanRef.current) {
       const width = spanRef.current.offsetWidth;
@@ -87,9 +93,9 @@ export default function EachItem(props: Props) {
           style={{
             maxWidth: '80%',
             width: `${inputWidth}px`,
-            minWidth: '20px', // 최소 너비 설정
+            minWidth: '20px',
             padding: '5px',
-            boxSizing: 'content-box', // content-box로 너비 계산
+            boxSizing: 'content-box',
           }}
           className="detail-page-name-input"
           value={name.name}

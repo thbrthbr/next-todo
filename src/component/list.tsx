@@ -1,3 +1,4 @@
+// 리스트 전체 컴포넌트
 'use client';
 
 import EachList from './each-list';

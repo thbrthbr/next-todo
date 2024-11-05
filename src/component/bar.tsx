@@ -18,6 +18,7 @@ interface Props {
 export default function Bar(props: Props) {
   const { setNewTodo, newTodo, func } = props;
 
+  // input창에 엔터를 쳤을 때 사용할 할 일 추가 함수
   const addTodos = async () => {
     await fetch(`https://assignment-todolist-api.vercel.app/api/thbr/items`, {
       method: 'POST',
@@ -28,6 +29,7 @@ export default function Bar(props: Props) {
     func();
   };
 
+  // 엔터 핸들러
   const handleEnter = <T extends HTMLElement>(e: React.KeyboardEvent<T>) => {
     if (e.key == 'Enter') {
       addTodos();

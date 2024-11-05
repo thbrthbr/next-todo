@@ -1,3 +1,5 @@
+// 할 일 디테일 페이지
+
 'use client';
 
 import { useParams, useRouter } from 'next/navigation';
@@ -32,6 +34,7 @@ export default function Detail() {
   });
   const param = useParams();
 
+  // 특정 할 일의 세부 데이터들 get요청
   const getItemDetail = async () => {
     let result = await fetch(
       `https://assignment-todolist-api.vercel.app/api/thbr/items/${param.id}`,
@@ -52,6 +55,7 @@ export default function Detail() {
     });
   };
 
+  // 이미지 업로드 후 이미지 링크 받아오는 함수
   const selectFile = async (event: ChangeEvent<HTMLInputElement>) => {
     const imageFile: File | undefined = event.target.files?.[0];
     if (imageFile) {
@@ -79,13 +83,13 @@ export default function Detail() {
     }
   };
 
+  // 메인페이지 이동
   const goBack = () => {
     router.push('/');
   };
 
-  const handleResizeHeight = (
-    event: React.ChangeEvent<HTMLTextAreaElement>,
-  ) => {
+  // 메모 내용 핸들링
+  const handleMemo = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setItem({ ...item, memo: event.target.value });
   };
 
@@ -93,6 +97,7 @@ export default function Detail() {
     getItemDetail();
   }, []);
 
+  // 메모 textarea 자동 사이징용 코드
   useEffect(() => {
     if (memoRef.current) {
       memoRef.current.style.height = 'auto';
@@ -151,7 +156,7 @@ export default function Detail() {
           <div className="detail-page-memo-content-wrapper">
             <textarea
               value={item.memo as string}
-              onChange={handleResizeHeight}
+              onChange={handleMemo}
               ref={memoRef}
               spellCheck="false"
               className="detail-page-memo-content"

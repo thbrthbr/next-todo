@@ -1,3 +1,5 @@
+// 재사용 범용 버튼 컴포넌트
+
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
@@ -28,12 +30,14 @@ export default function Button(props: Props) {
   const [original, setOriginal] = useState('');
   const { newTodo, func, type } = props;
 
+  // props로 받는 타입에 따라 다른 기능을 수행
   const chooseFunction = () => {
     if (type == 'add') addTodo();
     if (type == 'edit') editTodo();
     if (type == 'delete') deleteTodo();
   };
 
+  // 할 일 추가 post요청
   const addTodo = async () => {
     if (newTodo.name) {
       await fetch(`https://assignment-todolist-api.vercel.app/api/thbr/items`, {
@@ -48,6 +52,7 @@ export default function Button(props: Props) {
     }
   };
 
+  // 특정 할 일 세부사항 수정 patch요청
   const editTodo = async () => {
     await fetch(
       `https://assignment-todolist-api.vercel.app/api/thbr/items/${newTodo.id}`,
@@ -68,6 +73,7 @@ export default function Button(props: Props) {
     func();
   };
 
+  // 할 일 삭제 delete요청
   const deleteTodo = async () => {
     await fetch(
       `https://assignment-todolist-api.vercel.app/api/thbr/items/${newTodo.id}`,
@@ -79,6 +85,7 @@ export default function Button(props: Props) {
     func();
   };
 
+  // 변화가 감지되었을 때 버튼색 변하는 함수
   const detectActivate = () => {
     if (activateRef.current) {
       if (type == 'edit') {
@@ -91,6 +98,7 @@ export default function Button(props: Props) {
     }
   };
 
+  // 첫 렌더링 때 버튼의 모양을 결정할 state 관리
   useEffect(() => {
     if (type == 'add') {
       setTypeText('추가하기');
@@ -106,6 +114,7 @@ export default function Button(props: Props) {
     }
   }, []);
 
+  // 처음 받아왔을 때의 데이터와 다른지 체크하기 위한 코드
   useEffect(() => {
     setOriginal(JSON.stringify(newTodo));
     if (isMounted.current) {

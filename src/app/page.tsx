@@ -1,3 +1,5 @@
+// 메인페이지
+
 'use client';
 
 import Image from 'next/image';
@@ -30,6 +32,7 @@ export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [dones, setDones] = useState<Todo[]>([]);
 
+  // 할 일 목록 get요청
   const getTodos = async () => {
     let result = await fetch(
       `https://assignment-todolist-api.vercel.app/api/thbr/items`,
