@@ -1,6 +1,8 @@
 ![로고](https://github.com/thbrthbr/studyMemo/blob/main/Size=Large.png?raw=true)
 # Do it ; 
 
+배포링크 : https://next-todo-59dg.vercel.app/
+
 간단하게 사용할 수 있는 to-do 리스트
 
 기능설명)
